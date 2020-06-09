@@ -53,7 +53,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/webprivate").authenticated()
                 .antMatchers( "/webadmin").hasRole("ADMIN").and()
                 .formLogin()
-                .loginPage( "/ login")
+                .loginPage( "/login")
                 .permitAll()
                 .and()
                 .logout() // get method for I desabilitado CSRF
