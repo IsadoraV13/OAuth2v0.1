@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <p>Click  <a th:href="@{/public}">here</a>for a public page</p>
+    <p>If you're a standard user, click <a th:href="@{/private}">here</a>for a private page</p>
+    <p>If you're an admin user, click <a th:href="@{/admin}">here</a>for the admin page</p>
+    <div sec:authorize="isAuthenticated()">
+        Hello <span sec:authentication="name">someone</span>
+        <p><a th:href="@{/logout}">Logout</a></p>
+    </div>
+
+</body>
+</html>
