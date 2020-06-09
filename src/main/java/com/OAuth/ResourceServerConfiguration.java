@@ -30,7 +30,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Override
     public void configure (HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers ("/oauth/token", "/oauth/authorise**", "/publish"). permitAll ();
+                .authorizeRequests().antMatchers ("/oauth/token", "/oauth/authorise**", "/public"). permitAll ();
         // .anyRequest().authenticated(); // commented otherwise all resources would only be accessible if user has been validated
         http.requestMatchers().antMatchers ("/private") // Deny access to "/ private"
                 .and().authorizeRequests()
