@@ -1,3 +1,5 @@
+package com.OAuth;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -30,15 +32,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     // define users that will have access to our website
     public UserDetailsService userDetailsService () {
-        UserDetails user = User.builder().username("user").password(passwordEncoder().encode("secret")).
+        UserDetails user = User.builder().username("user").password(pwdEncoder().encode("secret")).
                 roles("USER").build();
-        UserDetails userAdmin = User.builder().username("admin").password(passwordEncoder().encode("secret")).
+        UserDetails userAdmin = User.builder().username("admin").password(pwdEncoder().encode("secret")).
                 roles("ADMIN").build();
         return new InMemoryUserDetailsManager(user,userAdmin);
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder () {
+    public PasswordEncoder pwdEncoder () {
         return new BCryptPasswordEncoder();
     }
 
